@@ -25,11 +25,11 @@ let platforms = [
 ];
 
 let bgImage;
+let playerImg;
 
 function preload() {
-  bgImage = loadImage(
-    "assets/images/wood-plank-texture-seamless-pattern-600nw-2770482183.webp",
-  );
+  bgImage = loadImage('assets/images/wood-plank-texture-seamless-pattern-600nw-2770482183.webp');
+  playerImg = loadImage('assets/images/501-5016264_onigiri-png-onigiri.png');
 }
 
 // ------------------------------------------------------------
@@ -294,45 +294,32 @@ function drawChopstickPlatform(p) {
 // styles set here don't affect other drawing functions.
 // ------------------------------------------------------------
 function drawPlayer() {
-  push(); // save current drawing settings
-  translate(player.x, player.y);
+  push();
 
-  // Rice body
-  noStroke();
-  fill(250, 250, 245);
-  beginShape();
-  vertex(-player.r * 0.85, player.r * 0.75);
-  vertex(0, -player.r * 1.1);
-  vertex(player.r * 0.85, player.r * 0.75);
-  endShape(CLOSE);
+  if (playerImg) {
+    imageMode(CENTER);
+    let size = player.r * 2.2;
+    image(playerImg, player.x, player.y, size, size);
+  } else {
+    // Fallback: draw the onigiri shape if the image isn't loaded
+    translate(player.x, player.y);
+    noStroke();
+    fill(250, 250, 245);
+    beginShape();
+    vertex(-player.r * 0.85, player.r * 0.75);
+    vertex(0, -player.r * 1.1);
+    vertex(player.r * 0.85, player.r * 0.75);
+    endShape(CLOSE);
 
-  // Rice texture
-  fill(235, 235, 225);
-  for (let i = -1; i <= 1; i++) {
-    ellipse(i * 6, player.r * 0.05, 8, 5);
+    fill(30, 40, 35);
+    rect(-player.r * 0.5, player.r * 0.25, player.r, player.r * 0.65, 6);
+
+    fill(30);
+    ellipse(-player.r * 0.3, player.r * 0.1, 8, 8);
+    ellipse(player.r * 0.3, player.r * 0.1, 8, 8);
   }
 
-  // Nori wrap
-  fill(30, 40, 35);
-  rect(-player.r * 0.5, player.r * 0.25, player.r, player.r * 0.65, 6);
-
-  // Face
-  fill(30);
-  ellipse(-player.r * 0.3, player.r * 0.1, 8, 8);
-  ellipse(player.r * 0.3, player.r * 0.1, 8, 8);
-
-  noFill();
-  stroke(30);
-  strokeWeight(2);
-  arc(0, player.r * 0.35, 18, 12, 0, PI);
-
-  // Blush
-  noStroke();
-  fill(240, 150, 170, 180);
-  ellipse(-player.r * 0.65, player.r * 0.25, 10, 6);
-  ellipse(player.r * 0.65, player.r * 0.25, 10, 6);
-
-  pop(); // restore drawing settings
+  pop();
 }
 
 // ------------------------------------------------------------
