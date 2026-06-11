@@ -19,9 +19,12 @@ To run the sketch locally, open `index.html` in Google Chrome using Live Server.
 The console will show any errors in your sketch.
 
 ## Assets
-
-| `wood-plank-texture-seamless-pattern-600nw-2770482183.webp` | Image from Shutterstock |
-
+ 
+| File | Source |
+|------|--------|
+| `assets/images/wood-plank-texture-seamless-pattern-600nw-2770482183.webp` | Wood Plank Texture Seamless Pattern — Shutterstock [1] |
+ 
 ## References
-
-N/A
+ 
+[1] Shutterstock. [n. d.]. Wood plank texture seamless pattern. Retrieved June 10, 2026 from https://www.shutterstock.com/image-vector/wood-plank-texture-seamless-pattern-2770482183
+ 
